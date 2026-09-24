@@ -1,6 +1,6 @@
-# 💧 TARA Collegrade / Aqua Solutions — Official Storefront & Cloudflare Worker
+# ♨️ TARA Enterprises — Instant Water Heating Geyser (Official Store & Cloudflare Worker)
 
-A high-converting, mobile-first single-product e-commerce application for **Powerful Submersible Water Pump (Tara Collegrade 280W)**, backed by **Firebase Realtime Database**, **Shiprocket Logistics Auto-Push**, and **Razorpay & Cashfree Multi-Gateway Support** with a fast **Cloudflare Worker** serverless backend.
+A high-converting, mobile-first single-product e-commerce application for **Instant Water Heating Geyser (Tara Enterprises 3L • 3.0 KW)**, backed by **Firebase Realtime Database**, **Shiprocket Logistics Auto-Push**, and **Razorpay & Cashfree Multi-Gateway Support** with a fast **Cloudflare Worker** serverless backend.
 
 ---
 
