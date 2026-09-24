@@ -333,8 +333,8 @@
                 SPECIAL OFFER PRICE
               </span>
               <div class="flex items-center space-x-1.5 sm:space-x-2 flex-nowrap">
-                <span id="displayPrice" class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight leading-none whitespace-nowrap">₹ 1,500</span>
-                <span id="displayStrikePrice" class="text-xs sm:text-sm text-slate-400 line-through font-medium leading-none whitespace-nowrap">₹ 3,000</span>
+                <span id="displayPrice" class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight leading-none whitespace-nowrap">₹ 1,700</span>
+                <span id="displayStrikePrice" class="text-xs sm:text-sm text-slate-400 line-through font-medium leading-none whitespace-nowrap">₹ 3,400</span>
                 <span class="bg-red-600 text-white text-[9px] sm:text-[10px] font-black px-2 py-0.5 rounded-full uppercase shadow-2xs inline-flex items-center animate-pulse whitespace-nowrap leading-none">
                   50% OFF
                 </span>
@@ -404,7 +404,7 @@
                 </span>
               </div>
               <div class="mt-2 pt-1.5 border-t border-red-100 flex items-baseline justify-between w-full">
-                <span id="pageCodAmount" class="text-xs sm:text-sm font-black text-red-600 font-mono">₹ 1,500</span>
+                <span id="pageCodAmount" class="text-xs sm:text-sm font-black text-red-600 font-mono">₹ 1,700</span>
                 <span class="text-[9px] text-gray-500 font-medium">Pay at delivery</span>
               </div>
             </button>
@@ -419,7 +419,7 @@
                 <span class="page-radio-dot w-3.5 h-3.5 rounded-full border border-gray-300 bg-transparent flex items-center justify-center flex-shrink-0"></span>
               </div>
               <div class="mt-2 pt-1.5 border-t border-gray-100 flex items-baseline justify-between w-full">
-                <span id="pagePrepaidAmount" class="text-xs sm:text-sm font-black text-emerald-700 font-mono">₹ 1,400</span>
+                <span id="pagePrepaidAmount" class="text-xs sm:text-sm font-black text-emerald-700 font-mono">₹ 1,600</span>
                 <span class="text-[9px] text-emerald-700 font-bold bg-emerald-50 px-1 py-0.2 rounded border border-emerald-200/60">Save ₹100</span>
               </div>
             </button>
@@ -698,7 +698,7 @@
                   </span>
                 </div>
                 <div class="mt-1 pt-1 border-t border-red-100 flex items-baseline justify-between">
-                  <span id="modalCodAmount" class="text-xs font-black text-red-600 font-mono">₹ 1,500</span>
+                  <span id="modalCodAmount" class="text-xs font-black text-red-600 font-mono">₹ 1,700</span>
                   <span class="text-[9px] text-gray-500">Pay at delivery</span>
                 </div>
               </label>
@@ -714,7 +714,7 @@
                   <span class="payment-radio-dot w-3.5 h-3.5 rounded-full border border-gray-300 bg-transparent flex items-center justify-center flex-shrink-0"></span>
                 </div>
                 <div class="mt-1 pt-1 border-t border-gray-100 flex items-baseline justify-between">
-                  <span id="modalPrepaidAmount" class="text-xs font-black text-emerald-700 font-mono">₹ 1,400</span>
+                  <span id="modalPrepaidAmount" class="text-xs font-black text-emerald-700 font-mono">₹ 1,600</span>
                   <span class="text-[9px] text-emerald-700 font-bold">Save ₹100</span>
                 </div>
               </label>
@@ -726,7 +726,7 @@
           <button type="submit" id="modalSubmitBtn" class="w-full cta-red-btn glow-pulse-btn shimmer rounded-full p-3.5 text-center cursor-pointer shadow-xl mt-3">
             <div class="text-xs sm:text-sm font-extrabold text-white flex items-center justify-center space-x-2 uppercase tracking-wide">
               <i class="fa-solid fa-truck-fast"></i>
-              <span id="modalSubmitBtnText">CONFIRM CASH ON DELIVERY ORDER (₹ 1,500)</span>
+              <span id="modalSubmitBtnText">CONFIRM CASH ON DELIVERY ORDER (₹ 1,700)</span>
             </div>
           </button>
 
@@ -840,7 +840,7 @@
             <span>Order COD</span>
           </div>
           <div class="text-xs font-mono font-black text-white mt-0.5" id="mobileBottomCodPrice">
-            ₹ 1,500
+            ₹ 1,700
           </div>
         </button>
 
@@ -852,7 +852,7 @@
             <span class="bg-white text-red-600 text-[8px] font-black px-1 rounded-sm ml-0.5">SAVE ₹100</span>
           </div>
           <div class="text-xs font-mono font-black text-white mt-0.5" id="mobileBottomOnlinePrice">
-            ₹ 1,400
+            ₹ 1,600
           </div>
         </button>
       </div>
@@ -885,10 +885,10 @@
   <script>
     document.getElementById("currentYearSpan").innerText = new Date().getFullYear();
 
-    // Pricing definition: Base ₹1,500 for COD. Prepaid gives ₹100 instant discount (₹1,400)
-    const UNIT_PRICE_COD = 1500;
-    const UNIT_PRICE_PREPAID = 1400;
-    const ORIGINAL_UNIT_PRICE = 3000;
+    // Pricing definition: Base ₹1,700 for COD. Prepaid gives ₹100 instant discount (₹1,600)
+    const UNIT_PRICE_COD = 1700;
+    const UNIT_PRICE_PREPAID = 1600;
+    const ORIGINAL_UNIT_PRICE = 3400;
 
     let selectedPaymentMethod = "COD"; // "COD" or "CASHFREE"
     let currentQty = 1;
