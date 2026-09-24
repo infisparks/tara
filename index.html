@@ -305,41 +305,51 @@
           </a>
         </div>
 
-        <!-- 4. Professional Pricing & Quantity Selector Card -->
-        <div class="bg-white border border-gray-200/90 rounded-2xl p-3.5 sm:p-4 shadow-sm space-y-3">
+        <!-- 4. Professional Pricing & Quantity Selector Card (Animated & Responsive) -->
+        <div class="bg-white border border-gray-200/90 rounded-2xl p-3.5 sm:p-4 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden space-y-3">
           
-          <!-- Top Row: Big Price + Discount Tag -->
-          <div class="flex items-center justify-between">
-            <div class="space-y-0.5">
-              <span class="text-[10px] font-bold text-gray-400 uppercase tracking-wider block">Special Offer Price</span>
-              <div class="flex items-baseline space-x-2">
+          <!-- Top Row: Price + Discount Badge + Free Delivery -->
+          <div class="flex items-center justify-between gap-2">
+            <div class="space-y-0.5 min-w-0">
+              <div class="flex items-center gap-1 text-[10px] font-black text-red-600 uppercase tracking-wider">
+                <i class="fa-solid fa-fire text-red-500 animate-pulse"></i>
+                <span>Special Offer Price</span>
+              </div>
+              <div class="flex items-baseline space-x-1.5 sm:space-x-2 flex-wrap">
                 <span id="displayPrice" class="text-2xl sm:text-3xl font-black text-gray-950 tracking-tight font-mono">₹ 2,999</span>
                 <span class="text-xs sm:text-sm text-gray-400 line-through font-mono">₹ 5,999</span>
-                <span class="bg-red-600 text-white text-[9px] sm:text-[10px] font-black px-2 py-0.5 rounded-full uppercase shadow-xs">50% OFF</span>
+                <span class="bg-gradient-to-r from-red-600 to-rose-600 text-white text-[9px] sm:text-[10px] font-black px-2 py-0.5 rounded-full uppercase shadow-xs inline-flex items-center gap-0.5 animate-pulse">
+                  50% OFF
+                </span>
               </div>
             </div>
 
             <!-- Free Delivery Pill -->
-            <div class="bg-emerald-50 border border-emerald-200/80 px-2.5 py-1 rounded-xl flex items-center space-x-1.5 text-emerald-800 text-[11px] font-bold shadow-2xs">
-              <i class="fa-solid fa-truck-fast text-emerald-600"></i>
+            <div class="bg-emerald-50 border border-emerald-200/80 px-2.5 py-1 sm:py-1.5 rounded-xl flex items-center space-x-1.5 text-emerald-800 text-[10px] sm:text-[11px] font-bold shadow-2xs shrink-0">
+              <i class="fa-solid fa-truck-fast text-emerald-600 text-xs"></i>
               <span>Free Delivery</span>
             </div>
           </div>
 
-          <!-- Bottom Row: Quantity Stepper with Stock Notice -->
-          <div class="pt-2 border-t border-gray-100 flex items-center justify-between">
+          <!-- Bottom Row: Quantity Stepper + Live Stock Notice -->
+          <div class="pt-2.5 border-t border-gray-100 flex items-center justify-between gap-2 flex-wrap">
             <div class="flex items-center space-x-2">
               <span class="text-xs font-bold text-gray-700">Quantity:</span>
-              <div class="inline-flex items-center bg-gray-100 rounded-xl p-0.5 border border-gray-200">
-                <button type="button" onclick="changeQty(-1)" class="w-7 h-7 rounded-lg bg-white hover:bg-gray-50 text-gray-800 font-black flex items-center justify-center text-sm shadow-2xs transition-colors cursor-pointer active:scale-95">-</button>
-                <div id="qtyDisplay" class="w-8 h-7 flex items-center justify-center font-black text-gray-900 text-xs sm:text-sm font-mono">1</div>
-                <button type="button" onclick="changeQty(1)" class="w-7 h-7 rounded-lg bg-red-600 hover:bg-red-700 text-white font-black flex items-center justify-center text-sm shadow-2xs transition-colors cursor-pointer active:scale-95">+</button>
+              <div class="inline-flex items-center bg-gray-100/90 rounded-xl p-0.5 border border-gray-200 shadow-2xs">
+                <button type="button" onclick="changeQty(-1)" class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-white hover:bg-gray-50 active:scale-90 text-gray-800 font-black flex items-center justify-center text-sm shadow-2xs border border-gray-200/80 transition-transform cursor-pointer">-</button>
+                <div id="qtyDisplay" class="w-8 sm:w-9 h-7 sm:h-8 flex items-center justify-center font-black text-gray-950 text-xs sm:text-sm font-mono select-none">1</div>
+                <button type="button" onclick="changeQty(1)" class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-red-600 hover:bg-red-700 active:scale-90 text-white font-black flex items-center justify-center text-sm shadow-xs transition-transform cursor-pointer">+</button>
               </div>
             </div>
 
-            <div class="text-[11px] text-gray-500 font-medium flex items-center gap-1">
-              <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-              <span>In Stock (Ready to Ship)</span>
+            <!-- Live Stock Ping Indicator -->
+            <div class="flex items-center space-x-1.5 text-[11px] shrink-0">
+              <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              </span>
+              <span class="font-extrabold text-emerald-800">In Stock</span>
+              <span class="text-gray-400 hidden xs:inline">• Ready to Dispatch</span>
             </div>
           </div>
 
