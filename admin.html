@@ -363,7 +363,9 @@
 
                             <select id="filter-provider" onchange="loadOrdersAndStats()" class="px-3 py-2 text-xs rounded-lg border border-[#E5E7EB] bg-white text-[#111827] focus:outline-none focus:border-indigo-600">
                                 <option value="all">All Payment Methods</option>
-                                <option value="cashfree">Online Payment (Cashfree)</option>
+                                <option value="online">All Online Payments</option>
+                                <option value="razorpay">Razorpay Online</option>
+                                <option value="cashfree">Cashfree Online</option>
                                 <option value="cod">Cash on Delivery (COD)</option>
                             </select>
 
@@ -734,13 +736,14 @@
     <script>
         // User's Firebase Configuration
         const firebaseConfig = {
-            apiKey: "AIzaSyCzpBM7uDpiyAmz_eo8voRSju_PTnyh-mE",
-            authDomain: "aabe-hayat.firebaseapp.com",
-            databaseURL: "https://aabe-hayat-default-rtdb.firebaseio.com",
-            projectId: "aabe-hayat",
-            storageBucket: "aabe-hayat.firebasestorage.app",
-            messagingSenderId: "732627048868",
-            appId: "1:732627048868:web:bb7d750ebe1704baa08931"
+            apiKey: "AIzaSyDzMO19Y1e-pnMyYhnMsO-9T264kS1O8oU",
+            authDomain: "taraecommerce-bd665.firebaseapp.com",
+            databaseURL: "https://taraecommerce-bd665-default-rtdb.firebaseio.com",
+            projectId: "taraecommerce-bd665",
+            storageBucket: "taraecommerce-bd665.firebasestorage.app",
+            messagingSenderId: "78290974771",
+            appId: "1:78290974771:web:8b5d66a86263d01a884b46",
+            measurementId: "G-HX5MDRFEX9"
         };
 
         // Initialize Firebase
@@ -1008,8 +1011,8 @@
 
                 // 2. Direct Firebase RTDB Fallback
                 if (!fetchedOrders) {
-                    const dbSecret = "HKRBfNsCEPVfmHk6yNZpZhBZkYpMtsNSkkQtFqxF";
-                    const fbRes = await fetch(`https://aabe-hayat-default-rtdb.firebaseio.com/orders.json?auth=${dbSecret}`);
+                    const dbSecret = "btornOBVsIZqFA2na5swBLTH3HvpAYbQCYTdiIWO";
+                    const fbRes = await fetch(`https://taraecommerce-bd665-default-rtdb.firebaseio.com/orders.json?auth=${dbSecret}`);
                     if (fbRes.ok) {
                         const rawMap = await fbRes.json() || {};
                         fetchedOrders = Object.values(rawMap).map(o => ({

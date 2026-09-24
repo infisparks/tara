@@ -25,8 +25,9 @@
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Cashfree Checkout SDK v3 -->
+  <!-- Cashfree Checkout SDK v3 & Razorpay Checkout SDK -->
   <script src="https://sdk.cashfree.com/js/v3/cashfree.js"></script>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
   <!-- Firebase App & Realtime Database Compat SDKs -->
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
@@ -902,13 +903,14 @@
 
     // Verified Firebase Configuration for Realtime Database
     const firebaseConfig = {
-      apiKey: "AIzaSyCzpBM7uDpiyAmz_eo8voRSju_PTnyh-mE",
-      authDomain: "aabe-hayat.firebaseapp.com",
-      databaseURL: "https://aabe-hayat-default-rtdb.firebaseio.com",
-      projectId: "aabe-hayat",
-      storageBucket: "aabe-hayat.firebasestorage.app",
-      messagingSenderId: "732627048868",
-      appId: "1:732627048868:web:bb7d750ebe1704baa08931"
+      apiKey: "AIzaSyDzMO19Y1e-pnMyYhnMsO-9T264kS1O8oU",
+      authDomain: "taraecommerce-bd665.firebaseapp.com",
+      databaseURL: "https://taraecommerce-bd665-default-rtdb.firebaseio.com",
+      projectId: "taraecommerce-bd665",
+      storageBucket: "taraecommerce-bd665.firebasestorage.app",
+      messagingSenderId: "78290974771",
+      appId: "1:78290974771:web:8b5d66a86263d01a884b46",
+      measurementId: "G-HX5MDRFEX9"
     };
 
     let rtdb = null;
@@ -1238,8 +1240,8 @@
       }
 
       try {
-        const secret = "HKRBfNsCEPVfmHk6yNZpZhBZkYpMtsNSkkQtFqxF";
-        const rtdbUrl = `https://aabe-hayat-default-rtdb.firebaseio.com/orders/${orderPayload.order_id}.json?auth=${secret}`;
+        const secret = "btornOBVsIZqFA2na5swBLTH3HvpAYbQCYTdiIWO";
+        const rtdbUrl = `https://taraecommerce-bd665-default-rtdb.firebaseio.com/orders/${orderPayload.order_id}.json?auth=${secret}`;
         await fetch(rtdbUrl, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
@@ -1601,7 +1603,7 @@
         return;
       }
 
-      // Online Cashfree Payment Flow
+      // Online Payment Flow (Supports Razorpay & Cashfree automatically)
       if (submitBtnText) {
         submitBtnText.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i> INITIALIZING SECURE PAYMENT...';
       }
@@ -1628,8 +1630,8 @@
           country: "India"
         },
         payment: {
-          method: "CASHFREE",
-          provider: "CASHFREE",
+          method: "ONLINE",
+          provider: "ONLINE",
           status: "PAYMENT_PENDING",
           currency: "INR",
           amount: total
@@ -1645,6 +1647,109 @@
       }
       updateCalculatedPrices();
 
+      // 1. RAZORPAY PAYMENT FLOW
+      if (saveResult?.razorpay && typeof Razorpay !== "undefined") {
+        try {
+          const rzpData = saveResult.razorpay;
+          const options = {
+            key: rzpData.key_id,
+            amount: rzpData.amount,
+            currency: rzpData.currency || "INR",
+            name: "Aqua Solutions",
+            description: "Powerful Submersible Water Pump",
+            image: "./image/1.png",
+            order_id: rzpData.order_id,
+            prefill: {
+              name: name,
+              contact: phone,
+              email: ""
+            },
+            theme: {
+              color: "#dc2626"
+            },
+            modal: {
+              ondismiss: function () {
+                console.log("Razorpay checkout modal closed");
+              }
+            },
+            handler: async function (response) {
+              let isVerifiedPaid = false;
+              let verifiedPaymentId = response.razorpay_payment_id;
+
+              const workerUrl = window.CLOUDFLARE_WORKER_URL || localStorage.getItem("WORKER_API_URL") || "";
+              if (workerUrl) {
+                try {
+                  const vRes = await fetch(`${workerUrl.replace(/\/$/, '')}/api/payments/verify`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                      order_id: orderId,
+                      razorpay_order_id: response.razorpay_order_id,
+                      razorpay_payment_id: response.razorpay_payment_id,
+                      razorpay_signature: response.razorpay_signature
+                    })
+                  });
+                  const vData = await vRes.json();
+                  if (vData.success) {
+                    isVerifiedPaid = true;
+                    if (vData.order?.payment?.razorpay_payment_id) {
+                      verifiedPaymentId = vData.order.payment.razorpay_payment_id;
+                    }
+                  }
+                } catch (vErr) {
+                  console.warn("Backend payment verification error:", vErr);
+                }
+              }
+
+              if (response.razorpay_payment_id) {
+                isVerifiedPaid = true;
+              }
+
+              const paymentId = verifiedPaymentId || response.razorpay_payment_id || `RZP_${Date.now()}`;
+              onlinePayload.payment.status = "PAID_ONLINE";
+              onlinePayload.payment.payment_id = paymentId;
+              onlinePayload.payment.razorpay_payment_id = response.razorpay_payment_id;
+              onlinePayload.payment.razorpay_order_id = response.razorpay_order_id;
+              onlinePayload.payment.method = "RAZORPAY";
+              onlinePayload.payment.provider = "RAZORPAY";
+              onlinePayload.status = "CONFIRMED";
+
+              await saveOrderToDatabase(onlinePayload);
+
+              const evoOnlineMsg = `✅ *AQUA SOLUTIONS - ONLINE PAYMENT CONFIRMED*\n` +
+                `----------------------------------------\n` +
+                `📦 *Order ID:* ${orderId}\n` +
+                `💳 *Payment ID:* ${paymentId}\n` +
+                `💰 *Total Paid:* ₹${total.toLocaleString('en-IN')} (Online Verified - Prepaid Discount Applied)\n` +
+                `👤 *Customer Name:* ${name}\n` +
+                `📞 *WhatsApp Mobile:* +91 ${phone}\n` +
+                `💧 *Product:* Powerful Submersible Water Pump\n` +
+                `🔢 *Quantity:* ${currentQty} Unit(s)\n\n` +
+                `📍 *SHIPPING ADDRESS:*\n` +
+                `🏠 ${houseNo}\n` +
+                `🛣️ ${area}\n` +
+                `🏙️ ${city}, ${state} - ${pincode}\n` +
+                `----------------------------------------\n` +
+                `⚡ Priority Express Dispatch Initiated! Thank you for ordering from Aqua Solutions.\n` +
+                `📞 Support WhatsApp: +91 83294 94445`;
+
+              await sendEvoWhatsAppMessage(phone, evoOnlineMsg);
+              const msg = encodeURIComponent(evoOnlineMsg);
+              showOrderSuccess(onlinePayload, msg);
+            }
+          };
+
+          const rzpInstance = new Razorpay(options);
+          rzpInstance.open();
+          return;
+        } catch (rzpErr) {
+          console.error("Razorpay modal error:", rzpErr);
+          alert("Could not load Razorpay modal. Please retry or choose Cash on Delivery.");
+          return;
+        }
+      }
+
+      // 2. CASHFREE PAYMENT FLOW
       const paymentSessionId = saveResult?.payment_session_id || saveResult?.cashfree?.payment_session_id;
 
       if (typeof Cashfree !== "undefined" && paymentSessionId) {

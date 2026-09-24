@@ -1,26 +1,26 @@
 {
   "rules": {
-    ".read": "auth != null && (auth.uid === '0kRP8ItGUlc8E4tttNCcbwxeelf1' || auth.token.email === 'aabe@gmail.com')",
-    ".write": "auth != null && (auth.uid === '0kRP8ItGUlc8E4tttNCcbwxeelf1' || auth.token.email === 'aabe@gmail.com')",
+    ".read": "auth != null && (auth.uid === 'gWCSEiDankd8i0cchbDBE0Bywim2' || auth.token.email === 'tara@gmail.com')",
+    ".write": "auth != null && (auth.uid === 'gWCSEiDankd8i0cchbDBE0Bywim2' || auth.token.email === 'tara@gmail.com')",
     "orders": {
-      ".read": "auth != null && (auth.uid === '0kRP8ItGUlc8E4tttNCcbwxeelf1' || auth.token.email === 'aabe@gmail.com')",
+      ".read": "auth != null && (auth.uid === 'gWCSEiDankd8i0cchbDBE0Bywim2' || auth.token.email === 'tara@gmail.com')",
       ".indexOn": ["status", "order_date", "created_at"],
       "$orderId": {
-        ".read": "auth != null && (auth.uid === '0kRP8ItGUlc8E4tttNCcbwxeelf1' || auth.token.email === 'aabe@gmail.com')",
-        ".write": "auth != null && (auth.uid === '0kRP8ItGUlc8E4tttNCcbwxeelf1' || auth.token.email === 'aabe@gmail.com') || (!data.exists() && newData.exists())"
+        ".read": "auth != null && (auth.uid === 'gWCSEiDankd8i0cchbDBE0Bywim2' || auth.token.email === 'tara@gmail.com')",
+        ".write": "auth != null && (auth.uid === 'gWCSEiDankd8i0cchbDBE0Bywim2' || auth.token.email === 'tara@gmail.com') || (!data.exists() && newData.exists())"
       }
     },
     "settings": {
-      ".read": "auth != null && (auth.uid === '0kRP8ItGUlc8E4tttNCcbwxeelf1' || auth.token.email === 'aabe@gmail.com')",
-      ".write": "auth != null && (auth.uid === '0kRP8ItGUlc8E4tttNCcbwxeelf1' || auth.token.email === 'aabe@gmail.com')"
+      ".read": "auth != null && (auth.uid === 'gWCSEiDankd8i0cchbDBE0Bywim2' || auth.token.email === 'tara@gmail.com')",
+      ".write": "auth != null && (auth.uid === 'gWCSEiDankd8i0cchbDBE0Bywim2' || auth.token.email === 'tara@gmail.com')"
     },
     "webhookEvents": {
-      ".read": "auth != null && (auth.uid === '0kRP8ItGUlc8E4tttNCcbwxeelf1' || auth.token.email === 'aabe@gmail.com')",
-      ".write": "auth != null && (auth.uid === '0kRP8ItGUlc8E4tttNCcbwxeelf1' || auth.token.email === 'aabe@gmail.com')"
+      ".read": "auth != null && (auth.uid === 'gWCSEiDankd8i0cchbDBE0Bywim2' || auth.token.email === 'tara@gmail.com')",
+      ".write": "auth != null && (auth.uid === 'gWCSEiDankd8i0cchbDBE0Bywim2' || auth.token.email === 'tara@gmail.com')"
     },
     "idempotencyLocks": {
-      ".read": "auth != null && (auth.uid === '0kRP8ItGUlc8E4tttNCcbwxeelf1' || auth.token.email === 'aabe@gmail.com')",
-      ".write": "auth != null && (auth.uid === '0kRP8ItGUlc8E4tttNCcbwxeelf1' || auth.token.email === 'aabe@gmail.com')"
+      ".read": "auth != null && (auth.uid === 'gWCSEiDankd8i0cchbDBE0Bywim2' || auth.token.email === 'tara@gmail.com')",
+      ".write": "auth != null && (auth.uid === 'gWCSEiDankd8i0cchbDBE0Bywim2' || auth.token.email === 'tara@gmail.com')"
     }
   }
 }
