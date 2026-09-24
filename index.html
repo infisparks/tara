@@ -68,17 +68,34 @@
 
     /* Red Primary CTA Button */
     .cta-red-btn {
-      background: linear-gradient(180deg, #E52E2E 0%, #C81E1E 100%);
-      box-shadow: 0 6px 20px rgba(220, 38, 38, 0.38);
-      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      background: linear-gradient(135deg, #ef4444 0%, #dc2626 50%, #b91c1c 100%);
+      box-shadow: 0 4px 18px rgba(220, 38, 38, 0.42);
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .cta-red-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(220, 38, 38, 0.5);
-      background: linear-gradient(180deg, #EF3838 0%, #B91C1C 100%);
+      box-shadow: 0 8px 28px rgba(220, 38, 38, 0.6);
+      background: linear-gradient(135deg, #f87171 0%, #dc2626 50%, #991b1b 100%);
     }
     .cta-red-btn:active {
-      transform: scale(0.98);
+      transform: scale(0.97);
+    }
+
+    /* Radiant Pulsing Glow Ring Effect */
+    .glow-pulse-btn {
+      position: relative;
+      animation: radiantGlow 2.2s infinite ease-in-out;
+    }
+    @keyframes radiantGlow {
+      0% {
+        box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7), 0 4px 18px rgba(220, 38, 38, 0.45);
+      }
+      50% {
+        box-shadow: 0 0 0 10px rgba(220, 38, 38, 0), 0 8px 26px rgba(220, 38, 38, 0.65);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(220, 38, 38, 0), 0 4px 18px rgba(220, 38, 38, 0.45);
+      }
     }
 
     /* Shimmer effect */
@@ -96,11 +113,11 @@
       background: linear-gradient(
         60deg,
         transparent 30%,
-        rgba(255, 255, 255, 0.3) 50%,
+        rgba(255, 255, 255, 0.35) 50%,
         transparent 70%
       );
       transform: rotate(30deg);
-      animation: shimmer-anim 4s infinite;
+      animation: shimmer-anim 3.5s infinite;
     }
 
     @keyframes shimmer-anim {
@@ -251,12 +268,12 @@
           <i class="fa-solid fa-chevron-right"></i>
         </button>
 
-        <!-- Bottom Carousel Navigation Dots & Counter Indicator -->
-        <div class="absolute bottom-3 inset-x-0 flex items-center justify-center space-x-2 z-10 pointer-events-none">
-          <div class="bg-black/35 backdrop-blur-md px-2.5 py-1 rounded-full flex items-center space-x-1.5 pointer-events-auto shadow-sm">
-            <button type="button" onclick="goToSlide(0)" class="slide-dot w-4 h-1.5 rounded-full bg-red-600 transition-all cursor-pointer" aria-label="Go to slide 1"></button>
-            <button type="button" onclick="goToSlide(1)" class="slide-dot w-1.5 h-1.5 rounded-full bg-white/70 hover:bg-white transition-all cursor-pointer" aria-label="Go to slide 2"></button>
-            <button type="button" onclick="goToSlide(2)" class="slide-dot w-1.5 h-1.5 rounded-full bg-white/70 hover:bg-white transition-all cursor-pointer" aria-label="Go to slide 3"></button>
+        <!-- Bottom Carousel Navigation Dots & Counter Indicator (High Visibility Floating Pill) -->
+        <div class="absolute bottom-3 sm:bottom-4 inset-x-0 flex items-center justify-center space-x-2 z-10 pointer-events-none">
+          <div class="bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-full flex items-center space-x-2 pointer-events-auto shadow-md border border-slate-200/90">
+            <button type="button" onclick="goToSlide(0)" class="slide-dot w-6 h-2 rounded-full bg-red-600 shadow-xs transition-all duration-300 cursor-pointer" aria-label="Go to slide 1"></button>
+            <button type="button" onclick="goToSlide(1)" class="slide-dot w-2 h-2 rounded-full bg-slate-300 hover:bg-slate-400 transition-all duration-300 cursor-pointer" aria-label="Go to slide 2"></button>
+            <button type="button" onclick="goToSlide(2)" class="slide-dot w-2 h-2 rounded-full bg-slate-300 hover:bg-slate-400 transition-all duration-300 cursor-pointer" aria-label="Go to slide 3"></button>
           </div>
         </div>
 
@@ -315,8 +332,8 @@
                 SPECIAL OFFER PRICE
               </span>
               <div class="flex items-center space-x-1.5 sm:space-x-2 flex-nowrap">
-                <span id="displayPrice" class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight leading-none whitespace-nowrap">₹ 2,999</span>
-                <span id="displayStrikePrice" class="text-xs sm:text-sm text-slate-400 line-through font-medium leading-none whitespace-nowrap">₹ 5,999</span>
+                <span id="displayPrice" class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight leading-none whitespace-nowrap">₹ 1,500</span>
+                <span id="displayStrikePrice" class="text-xs sm:text-sm text-slate-400 line-through font-medium leading-none whitespace-nowrap">₹ 3,000</span>
                 <span class="bg-red-600 text-white text-[9px] sm:text-[10px] font-black px-2 py-0.5 rounded-full uppercase shadow-2xs inline-flex items-center animate-pulse whitespace-nowrap leading-none">
                   50% OFF
                 </span>
@@ -386,7 +403,7 @@
                 </span>
               </div>
               <div class="mt-2 pt-1.5 border-t border-red-100 flex items-baseline justify-between w-full">
-                <span id="pageCodAmount" class="text-xs sm:text-sm font-black text-red-600 font-mono">₹ 2,999</span>
+                <span id="pageCodAmount" class="text-xs sm:text-sm font-black text-red-600 font-mono">₹ 1,500</span>
                 <span class="text-[9px] text-gray-500 font-medium">Pay at delivery</span>
               </div>
             </button>
@@ -401,7 +418,7 @@
                 <span class="page-radio-dot w-3.5 h-3.5 rounded-full border border-gray-300 bg-transparent flex items-center justify-center flex-shrink-0"></span>
               </div>
               <div class="mt-2 pt-1.5 border-t border-gray-100 flex items-baseline justify-between w-full">
-                <span id="pagePrepaidAmount" class="text-xs sm:text-sm font-black text-emerald-700 font-mono">₹ 2,899</span>
+                <span id="pagePrepaidAmount" class="text-xs sm:text-sm font-black text-emerald-700 font-mono">₹ 1,400</span>
                 <span class="text-[9px] text-emerald-700 font-bold bg-emerald-50 px-1 py-0.2 rounded border border-emerald-200/60">Save ₹100</span>
               </div>
             </button>
@@ -409,9 +426,9 @@
           </div>
         </div>
 
-        <!-- 6. Primary Action CTA Button -->
+        <!-- 6. Primary Action CTA Button (With Radiant Glow Pulse Animation) -->
         <div class="pt-1.5">
-          <button onclick="openFastOrderModal()" id="mainCtaBtn" class="w-full cta-red-btn shimmer py-4 px-6 rounded-2xl sm:rounded-full text-white font-extrabold text-base sm:text-lg uppercase tracking-wider flex items-center justify-center space-x-2 shadow-xl cursor-pointer">
+          <button onclick="openFastOrderModal()" id="mainCtaBtn" class="w-full cta-red-btn glow-pulse-btn shimmer py-4 px-6 rounded-2xl sm:rounded-full text-white font-black text-base sm:text-lg uppercase tracking-wider flex items-center justify-center space-x-2 shadow-xl cursor-pointer">
             <i class="fa-solid fa-cart-shopping text-xl"></i>
             <span id="mainCtaText">ORDER NOW</span>
             <i class="fa-solid fa-chevron-right text-sm"></i>
@@ -553,7 +570,7 @@
               </div>
             </div>
             <p class="text-[11px] text-gray-600 leading-normal">
-              "Heavy-duty build quality, bright red body looks very sturdy. Used it for farm drip irrigation. Excellent product at ₹2,999."
+              "Heavy-duty build quality, bright red body looks very sturdy. Used it for farm drip irrigation. Excellent product at ₹1,500."
             </p>
           </div>
         </div>
@@ -590,7 +607,7 @@
           <div class="overflow-hidden flex-1">
             <h5 class="text-xs sm:text-sm font-extrabold text-gray-900 truncate">Powerful Submersible Water Pump</h5>
             <p id="modalPackSummary" class="text-[10px] text-gray-600 font-medium">Tara Collegrade Mini Monoblock (280W)</p>
-            <p class="text-red-600 font-black text-xs sm:text-sm"><span id="modalTotalSummary">₹ 2,999</span> <span id="modalQtySummary" class="text-[10px] text-gray-500 font-normal">(Qty: 1)</span></p>
+            <p class="text-red-600 font-black text-xs sm:text-sm"><span id="modalTotalSummary">₹ 1,500</span> <span id="modalQtySummary" class="text-[10px] text-gray-500 font-normal">(Qty: 1)</span></p>
           </div>
           <div class="text-right text-[11px] text-emerald-700 font-bold flex-shrink-0">
             <i class="fa-solid fa-truck-fast text-emerald-600"></i> Free Delivery
@@ -680,7 +697,7 @@
                   </span>
                 </div>
                 <div class="mt-1 pt-1 border-t border-red-100 flex items-baseline justify-between">
-                  <span id="modalCodAmount" class="text-xs font-black text-red-600 font-mono">₹ 2,999</span>
+                  <span id="modalCodAmount" class="text-xs font-black text-red-600 font-mono">₹ 1,500</span>
                   <span class="text-[9px] text-gray-500">Pay at delivery</span>
                 </div>
               </label>
@@ -696,7 +713,7 @@
                   <span class="payment-radio-dot w-3.5 h-3.5 rounded-full border border-gray-300 bg-transparent flex items-center justify-center flex-shrink-0"></span>
                 </div>
                 <div class="mt-1 pt-1 border-t border-gray-100 flex items-baseline justify-between">
-                  <span id="modalPrepaidAmount" class="text-xs font-black text-emerald-700 font-mono">₹ 2,899</span>
+                  <span id="modalPrepaidAmount" class="text-xs font-black text-emerald-700 font-mono">₹ 1,400</span>
                   <span class="text-[9px] text-emerald-700 font-bold">Save ₹100</span>
                 </div>
               </label>
@@ -705,10 +722,10 @@
           </div>
 
           <!-- Submit Button -->
-          <button type="submit" id="modalSubmitBtn" class="w-full cta-red-btn shimmer rounded-full p-3.5 text-center cursor-pointer shadow-xl mt-3">
+          <button type="submit" id="modalSubmitBtn" class="w-full cta-red-btn glow-pulse-btn shimmer rounded-full p-3.5 text-center cursor-pointer shadow-xl mt-3">
             <div class="text-xs sm:text-sm font-extrabold text-white flex items-center justify-center space-x-2 uppercase tracking-wide">
               <i class="fa-solid fa-truck-fast"></i>
-              <span id="modalSubmitBtnText">CONFIRM CASH ON DELIVERY ORDER (₹ 2,999)</span>
+              <span id="modalSubmitBtnText">CONFIRM CASH ON DELIVERY ORDER (₹ 1,500)</span>
             </div>
           </button>
 
@@ -784,7 +801,7 @@
             </div>
             <div class="flex items-center justify-between border-b border-gray-200 pb-2">
               <span class="text-gray-500">Amount &amp; Method:</span>
-              <span id="successPaymentSummary" class="font-bold text-emerald-700">₹ 2,999 (COD)</span>
+              <span id="successPaymentSummary" class="font-bold text-emerald-700">₹ 1,500 (COD)</span>
             </div>
             <div class="pt-0.5">
               <span class="text-gray-500 block mb-0.5">Delivery Address:</span>
@@ -822,19 +839,19 @@
             <span>Order COD</span>
           </div>
           <div class="text-xs font-mono font-black text-white mt-0.5" id="mobileBottomCodPrice">
-            ₹ 2,999
+            ₹ 1,500
           </div>
         </button>
 
         <!-- Prepaid / Online Fixed Button -->
-        <button type="button" onclick="openFastOrderModalWith('CASHFREE')" class="w-full cta-red-btn shimmer rounded-full py-2.5 px-2 text-center transition-all flex flex-col items-center justify-center cursor-pointer shadow-md active:scale-95">
+        <button type="button" onclick="openFastOrderModalWith('CASHFREE')" class="w-full cta-red-btn glow-pulse-btn shimmer rounded-full py-2.5 px-2 text-center transition-all flex flex-col items-center justify-center cursor-pointer shadow-md active:scale-95">
           <div class="flex items-center space-x-1 text-[11px] font-extrabold text-white uppercase tracking-tight">
             <i class="fa-solid fa-cart-shopping text-xs"></i>
             <span>ORDER NOW</span>
             <span class="bg-white text-red-600 text-[8px] font-black px-1 rounded-sm ml-0.5">SAVE ₹100</span>
           </div>
           <div class="text-xs font-mono font-black text-white mt-0.5" id="mobileBottomOnlinePrice">
-            ₹ 2,899
+            ₹ 1,400
           </div>
         </button>
       </div>
@@ -867,10 +884,10 @@
   <script>
     document.getElementById("currentYearSpan").innerText = new Date().getFullYear();
 
-    // Pricing definition: Base ₹2,999 for COD. Prepaid gives ₹100 instant discount (₹2,899)
-    const UNIT_PRICE_COD = 2999;
-    const UNIT_PRICE_PREPAID = 2899;
-    const ORIGINAL_UNIT_PRICE = 5999;
+    // Pricing definition: Base ₹1,500 for COD. Prepaid gives ₹100 instant discount (₹1,400)
+    const UNIT_PRICE_COD = 1500;
+    const UNIT_PRICE_PREPAID = 1400;
+    const ORIGINAL_UNIT_PRICE = 3000;
 
     let selectedPaymentMethod = "COD"; // "COD" or "CASHFREE"
     let currentQty = 1;
@@ -916,9 +933,9 @@
       const dotsArr = document.querySelectorAll(".slide-dot");
       dotsArr.forEach((dot, i) => {
         if (i === index) {
-          dot.className = "slide-dot w-4 h-1.5 rounded-full bg-red-600 transition-all cursor-pointer";
+          dot.className = "slide-dot w-6 h-2 rounded-full bg-red-600 shadow-xs transition-all duration-300 cursor-pointer";
         } else {
-          dot.className = "slide-dot w-1.5 h-1.5 rounded-full bg-white/70 hover:bg-white transition-all cursor-pointer";
+          dot.className = "slide-dot w-2 h-2 rounded-full bg-slate-300 hover:bg-slate-400 transition-all duration-300 cursor-pointer";
         }
       });
     }
@@ -1043,7 +1060,7 @@
 
       const displayStrikePriceEl = document.getElementById("displayStrikePrice");
       if (displayStrikePriceEl) {
-        displayStrikePriceEl.innerText = `₹ ${(5999 * currentQty).toLocaleString('en-IN')}`;
+        displayStrikePriceEl.innerText = `₹ ${(ORIGINAL_UNIT_PRICE * currentQty).toLocaleString('en-IN')}`;
       }
 
       // Amounts in buttons
