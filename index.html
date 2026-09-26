@@ -17,6 +17,24 @@
   <meta name="twitter:title" content="Instant Water Heating Geyser (3 Litre) | Tara Enterprises" />
   <meta name="twitter:description" content="Instant hot water in seconds with 3.0 KW heating element and 1 Year Warranty. Free Delivery across India." />
 
+  <!-- Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1725354645189495');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1725354645189495&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+
   <!-- Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -890,6 +908,18 @@
   <script>
     document.getElementById("currentYearSpan").innerText = new Date().getFullYear();
 
+    // Safe Meta Pixel Tracking Helper
+    function trackMetaPixel(eventName, params = {}) {
+      try {
+        if (typeof window.fbq === 'function') {
+          window.fbq('track', eventName, params);
+          console.log(`[Meta Pixel] Tracked ${eventName}:`, params);
+        }
+      } catch (e) {
+        console.warn('[Meta Pixel] Event tracking failed:', e);
+      }
+    }
+
     // Pricing definition: Base ₹1,700 for COD. Prepaid gives ₹100 instant discount (₹1,600)
     const UNIT_PRICE_COD = 1700;
     const UNIT_PRICE_PREPAID = 1600;
@@ -1436,6 +1466,16 @@
 
         await sendEvoWhatsAppMessage(pendingCodOrder.phone, evoConfirmMsg);
 
+        // Meta Pixel: Purchase event on successful COD OTP verification
+        trackMetaPixel('Purchase', {
+          content_name: 'Instant Water Heating Geyser (Tara Enterprises 3L 3.0KW)',
+          content_type: 'product',
+          value: pendingCodOrder.total,
+          currency: 'INR',
+          num_items: pendingCodOrder.quantity,
+          order_id: orderPayload.order_id
+        });
+
         const waMsg = encodeURIComponent(evoConfirmMsg);
         clearInterval(otpCountdownInterval);
         document.getElementById("codOtpVerificationView").classList.add("hidden");
@@ -1521,6 +1561,13 @@
       const total = (selectedPaymentMethod === "CASHFREE") ? getPrepaidTotal(currentQty) : getCodTotal(currentQty);
       const activeUnitPrice = Math.round(total / currentQty);
       const orderId = "AQ-" + Date.now().toString().slice(-6);
+
+      // Meta Pixel: Lead event on Checkout Form Submission
+      trackMetaPixel('Lead', {
+        content_name: 'Instant Water Heating Geyser (Tara Enterprises 3L 3.0KW)',
+        currency: 'INR',
+        value: total
+      });
 
       const submitBtn = document.getElementById("modalSubmitBtn");
       const submitBtnText = document.getElementById("modalSubmitBtnText");
@@ -1738,6 +1785,16 @@
                 `⚡ Priority Express Dispatch Initiated with 1-Year Warranty Included!\n` +
                 `📞 Support: +91 93735 58722 / +91 96233 10962`;
 
+              // Meta Pixel: Purchase event on Razorpay Online Payment Success
+              trackMetaPixel('Purchase', {
+                content_name: 'Instant Water Heating Geyser (Tara Enterprises 3L 3.0KW)',
+                content_type: 'product',
+                value: total,
+                currency: 'INR',
+                num_items: currentQty,
+                order_id: orderId
+              });
+
               await sendEvoWhatsAppMessage(phone, evoOnlineMsg);
               const msg = encodeURIComponent(evoOnlineMsg);
               showOrderSuccess(onlinePayload, msg);
@@ -1836,6 +1893,16 @@
               `⚡ Priority Express Dispatch Initiated with 1-Year Warranty Included!\n` +
               `📞 Support: +91 93735 58722 / +91 96233 10962`;
 
+            // Meta Pixel: Purchase event on Cashfree Online Payment Success
+            trackMetaPixel('Purchase', {
+              content_name: 'Instant Water Heating Geyser (Tara Enterprises 3L 3.0KW)',
+              content_type: 'product',
+              value: total,
+              currency: 'INR',
+              num_items: currentQty,
+              order_id: orderId
+            });
+
             await sendEvoWhatsAppMessage(phone, evoOnlineMsg);
             const msg = encodeURIComponent(evoOnlineMsg);
             showOrderSuccess(onlinePayload, msg);
@@ -1878,6 +1945,16 @@
             });
             const vData = await vRes.json();
             if (vData.success && vData.order && (vData.order.payment?.status === 'PAID_ONLINE' || vData.order.status === 'CONFIRMED')) {
+              // Meta Pixel: Purchase event on return URL confirmed online order
+              trackMetaPixel('Purchase', {
+                content_name: 'Instant Water Heating Geyser (Tara Enterprises 3L 3.0KW)',
+                content_type: 'product',
+                value: vData.order.product?.total_amount || 0,
+                currency: 'INR',
+                num_items: vData.order.product?.quantity || 1,
+                order_id: returnedOrderId
+              });
+
               openFastOrderModal();
               showOrderSuccess(vData.order, encodeURIComponent(`*✅ CONFIRMED ONLINE ORDER*\nOrder ID: ${returnedOrderId}`));
             }
