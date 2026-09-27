@@ -86,7 +86,7 @@
             <form id="admin-login-form" onsubmit="handleAdminLogin(event)" class="space-y-4">
                 <div>
                     <label class="block text-xs font-medium text-[#111827] mb-1">Admin Email <span class="text-red-500">*</span></label>
-                    <input type="email" id="login-email" required placeholder="admin@example.com" class="w-full px-3 py-2 text-sm rounded-lg border border-[#E5E7EB] focus:outline-none focus:border-indigo-600 focus:ring-1 focus:ring-indigo-600 bg-white placeholder-gray-400">
+                    <input type="email" id="login-email" required placeholder="admin@tara.com" class="w-full px-3 py-2 text-sm rounded-lg border border-[#E5E7EB] focus:outline-none focus:border-indigo-600 focus:ring-1 focus:ring-indigo-600 bg-white placeholder-gray-400">
                 </div>
 
                 <div>
@@ -121,7 +121,7 @@
                     </div>
                     <div>
                         <div class="text-sm font-bold text-[#111827] leading-none flex items-center gap-2">
-                            <span>AQUA SOLUTIONS STORE</span>
+                            <span>TARA ENTERPRISES</span>
                             <span class="inline-flex items-center px-1.5 py-0.5 rounded text-[9px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
                                 Live Store
                             </span>
@@ -136,11 +136,11 @@
                         <i class="fa-solid fa-arrow-up-right-from-square text-indigo-600 text-xs"></i>
                         <span>Storefront</span>
                     </a>
-                    <a href="tel:+919970347703" class="px-3 py-1.5 rounded-lg bg-indigo-50 text-indigo-800 font-bold hover:bg-indigo-100 transition-colors flex items-center gap-1.5 border border-indigo-100">
+                    <a href="tel:+919373558722" class="px-3 py-1.5 rounded-lg bg-indigo-50 text-indigo-800 font-bold hover:bg-indigo-100 transition-colors flex items-center gap-1.5 border border-indigo-100">
                         <i class="fa-solid fa-phone text-indigo-600 text-xs"></i>
-                        <span>+91 99703 47703</span>
+                        <span>+91 93735 58722</span>
                     </a>
-                    <a href="https://wa.me/919970347703" target="_blank" class="px-3 py-1.5 rounded-lg bg-emerald-50 text-emerald-800 font-bold hover:bg-emerald-100 transition-colors flex items-center gap-1.5 border border-emerald-200">
+                    <a href="https://wa.me/919373558722" target="_blank" class="px-3 py-1.5 rounded-lg bg-emerald-50 text-emerald-800 font-bold hover:bg-emerald-100 transition-colors flex items-center gap-1.5 border border-emerald-200">
                         <i class="fa-brands fa-whatsapp text-emerald-600 text-xs"></i>
                         <span>WhatsApp</span>
                     </a>
@@ -150,10 +150,10 @@
                 <div class="flex items-center gap-3">
                     <div class="flex items-center gap-2">
                         <div class="w-8 h-8 rounded-full bg-indigo-100 text-indigo-700 font-bold text-xs flex items-center justify-center flex-shrink-0" id="user-avatar-initial">
-                            A
+                            T
                         </div>
                         <div class="hidden md:block text-left">
-                            <div class="text-xs font-bold text-[#111827] max-w-[150px] truncate" id="admin-user-email">admin@example.com</div>
+                            <div class="text-xs font-bold text-[#111827] max-w-[150px] truncate" id="admin-user-email">admin@tara.com</div>
                             <div class="text-[10px] text-[#6B7280] font-medium">Store Admin</div>
                         </div>
                     </div>
@@ -655,9 +655,9 @@
                     <span class="text-[10px] text-indigo-600 font-medium">Auto-loads catalog price</span>
                 </label>
                 <select id="change-product-select" onchange="onProductDropdownChanged()" class="w-full px-3 py-2.5 text-xs bg-white border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 font-medium text-gray-900 cursor-pointer shadow-2xs">
-                    <option value="AAB-HAYAT-500ML" data-price="999">AAB-E-HAYAT™ Natural Botanical Juice (1 Bottle 500ml) [Rs. 999]</option>
-                    <option value="AAB-HAYAT-2PACK" data-price="1998">AAB-E-HAYAT™ Botanical Juice (2-Bottle Pack - 1000ml) [Rs. 1,998]</option>
-                    <option value="AAB-HAYAT-3PACK" data-price="2997">AAB-E-HAYAT™ Botanical Juice (3-Bottle Pack - 1500ml) [Rs. 2,997]</option>
+                    <option value="TARA-GEYSER-3L-3KW" data-price="1399">Tara Instant Water Heating Geyser (3L • 3.0KW) [Rs. 1,399]</option>
+                    <option value="TARA-GEYSER-2PACK" data-price="2699">Tara Instant Water Geyser (2-Unit Pack) [Rs. 2,699]</option>
+                    <option value="TARA-GEYSER-3PACK" data-price="3899">Tara Instant Water Geyser (3-Unit Pack) [Rs. 3,899]</option>
                 </select>
             </div>
 
@@ -756,7 +756,7 @@
         // Evolution API Configuration for Admin WhatsApp Concierge
         const EVO_CONFIG = {
             baseUrl: "https://evo.infispark.in",
-            instance: "aabe",
+            instance: "tara",
             apiKey: "vR39h6avY69g7kAU3YQbS6V6XEvudson"
         };
 
@@ -813,10 +813,10 @@
             btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Authenticating...`;
 
             // Master Secret & Direct Admin Key Bypass for instant access
-            if (password === 'aabe_hayat_admin_master_secret_2026' || password === 'admin123' || password === 'empire2026') {
-                currentAdminToken = 'aabe_hayat_admin_master_secret_2026';
-                document.getElementById('admin-user-email').textContent = email || 'admin@aabe-hayat.com';
-                document.getElementById('user-avatar-initial').textContent = (email[0] || 'A').toUpperCase();
+            if (password === 'tara_admin_master_secret_2026' || password === 'tara2026' || password === 'admin123' || password === 'empire2026') {
+                currentAdminToken = password;
+                document.getElementById('admin-user-email').textContent = email || 'admin@tara.com';
+                document.getElementById('user-avatar-initial').textContent = (email[0] || 'T').toUpperCase();
                 document.getElementById('login-section').classList.add('hidden');
                 document.getElementById('dashboard-section').classList.remove('hidden');
                 setDatePreset('today');
@@ -1423,7 +1423,7 @@
             XLSX.utils.book_append_sheet(wb, ws, "Orders");
 
             const todayStr = new Date().toISOString().slice(0, 10);
-            XLSX.writeFile(wb, `Aab_E_Hayat_Orders_${todayStr}.xlsx`);
+            XLSX.writeFile(wb, `Tara_Orders_${todayStr}.xlsx`);
         }
 
         // ==========================================
@@ -1486,7 +1486,7 @@
             const link = document.createElement('a');
             const todayStr = new Date().toISOString().slice(0, 10);
             link.setAttribute('href', url);
-            link.setAttribute('download', `Aab_E_Hayat_Orders_${todayStr}.csv`);
+            link.setAttribute('download', `Tara_Orders_${todayStr}.csv`);
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
@@ -1517,7 +1517,7 @@
             doc.setTextColor(255, 255, 255);
             doc.setFontSize(16);
             doc.setFont('helvetica', 'bold');
-            doc.text("AAB-E-HAYAT BOTANICAL STORE — ORDERS REPORT", 30, 36);
+            doc.text("TARA ENTERPRISES — ORDERS REPORT", 30, 36);
 
             doc.setFontSize(9);
             doc.setFont('helvetica', 'normal');
@@ -1599,7 +1599,7 @@
             });
 
             const fileDate = new Date().toISOString().slice(0, 10);
-            doc.save(`Aab_E_Hayat_Orders_Report_${fileDate}.pdf`);
+            doc.save(`Tara_Orders_Report_${fileDate}.pdf`);
         }
 
         // Open Order Details Modal
@@ -1788,19 +1788,19 @@
         let savedWhatsAppTemplates = {};
 
         const DEFAULT_WHATSAPP_TEMPLATES = {
-            order_accepted: `Assalamu Alaikum! Your order from Empire Global Herbal Science for {itemsText} has been confirmed. Estimated delivery date: {estDeliveryDate}, Insha Allah! 🌿✨\n\n*Order Summary:*\n📋 *Order ID:* #{orderId}\n💰 *Total Amount:* *{totalAmount}* ({paymentMethodText})\n📍 *Delivery Address:* {deliveryAddress}\n📞 *Customer Helpline:* +91 83294 94445`,
+            order_accepted: `Assalamu Alaikum! Your order from Tara Enterprises for {itemsText} has been confirmed. Estimated delivery date: {estDeliveryDate}, Insha Allah! ♨️✨\n\n*Order Summary:*\n📋 *Order ID:* #{orderId}\n💰 *Total Amount:* *{totalAmount}* ({paymentMethodText})\n📍 *Delivery Address:* {deliveryAddress}\n📞 *Customer Helpline:* +91 93735 58722 / +91 96233 10962`,
 
-            payment_link: `Assalamu Alaikum *{customerName}*! 🌿\n\nYour order (*#{orderId}*) for *{itemsText}* (Total: *{totalAmount}*) at *Empire Global Herbal Science* is reserved.\n\nPlease complete payment below for express dispatch:\n👉 {orderUrl}\n\n📞 *Call / WhatsApp Helpline:* +91 83294 94445\n\nRegards,\n*Aab-E-Hayat Team*`,
+            payment_link: `Assalamu Alaikum *{customerName}*! ♨️\n\nYour order (*#{orderId}*) for *{itemsText}* (Total: *{totalAmount}*) at *Tara Enterprises* is reserved.\n\nPlease complete payment below for express dispatch:\n👉 {orderUrl}\n\n📞 *Call / WhatsApp Helpline:* +91 93735 58722 / +91 96233 10962\n\nRegards,\n*Tara Enterprises Team*`,
 
-            payment_pending_cod: `Assalamu Alaikum *{customerName}*! 🌿\n\nWe noticed your online payment for order (*#{orderId}*) for *{itemsText}* (Total: *{totalAmount}*) was not completed.\n\n💡 *Would you like us to switch your order to Cash on Delivery (COD) and deliver it directly to your address?*\n\n📍 *Delivery Address:* {deliveryAddress}\n🗓️ *Estimated Delivery:* {estDeliveryDate}\n\n👉 Please reply *YES* to dispatch via Cash on Delivery 🚚\n📞 *Call to confirm:* +91 83294 94445\n\nRegards,\n*Aab-E-Hayat Team*`,
+            payment_pending_cod: `Assalamu Alaikum *{customerName}*! ♨️\n\nWe noticed your online payment for order (*#{orderId}*) for *{itemsText}* (Total: *{totalAmount}*) was not completed.\n\n💡 *Would you like us to switch your order to Cash on Delivery (COD) and deliver it directly to your address?*\n\n📍 *Delivery Address:* {deliveryAddress}\n🗓️ *Estimated Delivery:* {estDeliveryDate}\n\n👉 Please reply *YES* to dispatch via Cash on Delivery 🚚\n📞 *Call to confirm:* +91 93735 58722 / +91 96233 10962\n\nRegards,\n*Tara Enterprises Team*`,
 
-            shipped: `Assalamu Alaikum *{customerName}*! 🌿\n\nGreat news! Your order (*#{orderId}*) for *{itemsText}* has been dispatched via *{courier}* 🚚\n\n📦 *Tracking AWB:* *{awb}*\n🗓️ *Estimated Delivery:* *{estDeliveryDate}*\n🔗 *Track Live:* {orderUrl}\n📞 *Support Helpline:* +91 83294 94445\n\nRegards,\n*Empire Global Herbal Science*`,
+            shipped: `Assalamu Alaikum *{customerName}*! ♨️\n\nGreat news! Your order (*#{orderId}*) for *{itemsText}* has been dispatched via *{courier}* 🚚\n\n📦 *Tracking AWB:* *{awb}*\n🗓️ *Estimated Delivery:* *{estDeliveryDate}*\n🔗 *Track Live:* {orderUrl}\n📞 *Support Helpline:* +91 93735 58722 / +91 96233 10962\n\nRegards,\n*Tara Enterprises*`,
 
-            cod_followup: `Assalamu Alaikum *{customerName}*! 🌿\n\nYour Cash on Delivery order (*#{orderId}*) for *{itemsText}* (Total: *{totalAmount}*) is ready to be dispatched to *{city}*.\n\n👉 Please reply *YES* to confirm this order for immediate dispatch! 🚚\n📞 *Or call to confirm:* +91 83294 94445\n\nRegards,\n*Aab-E-Hayat Team*`,
+            cod_followup: `Assalamu Alaikum *{customerName}*! ♨️\n\nYour Cash on Delivery order (*#{orderId}*) for *{itemsText}* (Total: *{totalAmount}*) is ready to be dispatched to *{city}*.\n\n👉 Please reply *YES* to confirm this order for immediate dispatch! 🚚\n📞 *Or call to confirm:* +91 93735 58722 / +91 96233 10962\n\nRegards,\n*Tara Enterprises Team*`,
 
-            delivered: `Assalamu Alaikum *{customerName}*! 🌿\n\nYour order (*#{orderId}*) of *Aab-E-Hayat Botanical Juice* has been delivered! 🎉\n\nEnjoy 15ml to 20ml daily with water for refreshing natural goodness.\n📞 *Customer Helpline:* +91 83294 94445\n\nRegards,\n*Empire Global Herbal Science*`,
+            delivered: `Assalamu Alaikum *{customerName}*! ♨️\n\nYour order (*#{orderId}*) of *Tara Instant Water Heating Geyser* has been delivered! 🎉\n\nEnjoy instant hot water with full peace of mind and 1-Year Warranty.\n📞 *Customer Helpline:* +91 93735 58722 / +91 96233 10962\n\nRegards,\n*Tara Enterprises*`,
 
-            custom: `Assalamu Alaikum *{customerName}*! 🌿\n\nRegarding your order (*#{orderId}*) of Aab-E-Hayat Juice from Empire Global Herbal Science:\n\n📞 *Customer Care:* +91 83294 94445\n\nRegards,\n*Aab-E-Hayat Team*`
+            custom: `Assalamu Alaikum *{customerName}*! ♨️\n\nRegarding your order (*#{orderId}*) of Tara Instant Water Geyser from Tara Enterprises:\n\n📞 *Customer Care:* +91 93735 58722 / +91 96233 10962\n\nRegards,\n*Tara Enterprises Team*`
         };
 
         async function loadWhatsAppTemplatesFromFirebase() {
@@ -1823,12 +1823,12 @@
         function formatOrderItemsForWhatsApp(order) {
             if (order.product && order.product.name) {
                 const qty = order.product.quantity || 1;
-                return `${order.product.name} (${qty} Bottle${qty > 1 ? 's' : ''})`;
+                return `${order.product.name} (${qty} Unit${qty > 1 ? 's' : ''})`;
             }
             if (order.items && order.items.length > 0) {
-                return order.items.map(i => `${i.name || 'AAB-E-HAYAT Juice'} (Qty: ${i.qty || 1})`).join(', ');
+                return order.items.map(i => `${i.name || 'Tara Instant Water Geyser'} (Qty: ${i.qty || 1})`).join(', ');
             }
-            return 'AAB-E-HAYAT™ Natural Botanical Juice (500ml)';
+            return 'Tara Instant Water Heating Geyser (3L • 3.0KW)';
         }
 
         function calculateEstimatedDeliveryRange(orderDate) {
@@ -2177,9 +2177,9 @@
         let currentChangeProductOrderId = null;
 
         const CATALOG_PRICE_MAP = {
-            'AAB-HAYAT-500ML': { name: 'AAB-E-HAYAT™ Natural Botanical Juice (500ml)', price: 999, weight: '600gm' },
-            'AAB-HAYAT-2PACK': { name: 'AAB-E-HAYAT™ Botanical Juice (2-Bottle Pack - 1000ml)', price: 1998, weight: '1200gm' },
-            'AAB-HAYAT-3PACK': { name: 'AAB-E-HAYAT™ Botanical Juice (3-Bottle Pack - 1500ml)', price: 2997, weight: '1800gm' }
+            'TARA-GEYSER-3L-3KW': { name: 'Tara Instant Water Heating Geyser (3L • 3.0KW)', price: 1399, weight: '1500gm' },
+            'TARA-GEYSER-2PACK': { name: 'Tara Instant Water Geyser (2-Unit Pack)', price: 2699, weight: '3000gm' },
+            'TARA-GEYSER-3PACK': { name: 'Tara Instant Water Geyser (3-Unit Pack)', price: 3899, weight: '4500gm' }
         };
 
         function onProductDropdownChanged() {
